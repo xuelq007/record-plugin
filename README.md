@@ -61,5 +61,5 @@ If you have questions, check out [our FAQ](https://www.seleniumhq.org/selenium-i
 You can also find us on on the [#selenium](irc://freenode.net/selenium) IRC channel, which is also available on [Slack](https://seleniumhq.herokuapp.com).
 
 如何打包插件:
-
+branch: v3
 npm run build:ext
