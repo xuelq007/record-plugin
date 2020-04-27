@@ -24,6 +24,7 @@ import Command from '../../models/Command'
 import Manager from '../../../plugin/manager'
 import WindowSession from '../../IO/window-session'
 import BackgroundRecorder from '../../IO/SideeX/recorder'
+import { exportCodeToServer } from '../../code-export'
 
 class UiState {
   views = ['Tests', 'Test suites', 'Executing']
@@ -377,6 +378,11 @@ class UiState {
     this._setRecordingState(false)
     await this.emitRecordingState()
     await this.nameNewTest(opts.nameNewTest)
+
+    exportCodeToServer(['python-pytest'],
+      { test: this.selectedTest.test.export() },
+      { enableOriginTracing: false }
+    )
   }
 
   // Do not call this method directly, use start and stop

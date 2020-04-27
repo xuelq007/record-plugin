@@ -25,6 +25,31 @@ let clickEnabled = true
 window.master = master
 window.openedWindowIds = []
 
+const hostLocation = chrome.runtime.getURL('host.json')
+fetch(hostLocation)
+  .then(response => response.json()) //assuming file contains json
+  .then(json => {
+    let check_host = json.CHECK_HOST
+    let seleniumId = json.SELENIUM_ID
+
+    chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
+      let url = tab.url
+      console.log(url, seleniumId)
+      if (url.indexOf(check_host) === -1) {
+        console.warn(`url not match <CHECK_HOST> ${url} in data.json`)
+        return
+      }
+      if (changeInfo.status == 'complete' && tab.active) {
+        openPanel({ windowId: 0 })
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+          chrome.tabs.executeScript(
+              tabs[0].id,
+              { code: `let g = document.createElement("div");g.setAttribute("id", ${JSON.stringify(seleniumId)});document.body.appendChild(g);` });
+        })
+      }
+    })
+  })
+
 if (isStaging) openPanel({ windowId: 0 })
 
 function openPanel(tab) {

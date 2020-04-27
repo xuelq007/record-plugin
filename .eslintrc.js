@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: ['jest', 'react', 'prettier', 'no-only-tests'],
   rules: {
+    'no-console': 'off',
     'prettier/prettier': 'error',
     'react/prop-types': [0],
     'no-const-assign': 'error',

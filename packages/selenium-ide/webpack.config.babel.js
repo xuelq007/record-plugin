@@ -27,7 +27,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  devtool: isProduction ? 'source-map' : 'cheap-eval-source-map',
+  devtool: isProduction ? 'eval-source-map' : 'eval-source-map',
   entry: {
     polyfills: ['./content/setup'],
     playback: ['./content/commands-api'],
@@ -297,6 +297,7 @@ module.exports = {
       { from: 'content/indicator.html', to: '../' },
       { from: 'content/indicator.js', to: './' },
       { from: 'manifest.json', to: '../' },
+      { from: 'host.json', to: '../' },
       { from: 'icons', to: '../icons' },
     ]),
     // Generates an `index.html` file with the <script> injected.
@@ -305,18 +306,18 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, 'src/neo/index.html'),
       chunks: ['neo'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
+      // minify: {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   removeRedundantAttributes: true,
+      //   useShortDoctype: true,
+      //   removeEmptyAttributes: true,
+      //   removeStyleLinkTypeAttributes: true,
+      //   keepClosingSlash: true,
+      //   minifyJS: true,
+      //   minifyCSS: true,
+      //   minifyURLs: true,
+      // },
     }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.

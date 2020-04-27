@@ -16,3 +16,4 @@
 // under the License.
 
 window.global = this
+window.host = 'http://10.152.84.17:8409/rpa/job/selenium/addprogram'

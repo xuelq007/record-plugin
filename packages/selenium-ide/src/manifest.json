@@ -20,6 +20,7 @@
     "default_title": "Selenium IDE"
   },
   "permissions": [
+    "experimental",
     "tabs",
     "activeTab",
     "webRequest",
@@ -29,6 +30,8 @@
     "notifications",
     "storage",
     "debugger",
+    "cookies",
+    "declarativeContent",
     "<all_urls>"
   ],
   "externally_connectable": {
@@ -43,7 +46,8 @@
     "assets/indicator.js",
     "assets/highlight.css",
     "bootstrap.html",
-    "indicator.html"
+    "indicator.html",
+    "host.json"
   ],
   "content_security_policy": "script-src 'self' 'sha256-W7QWmGne6B9hjKtOqoGmUFOPgpFcUo4Nr/yyMqtgXcU=' 'sha256-4cgtnhJWZr038A2+gTGcUgQL2QsJao6c0AiTxYYo6c8=' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [

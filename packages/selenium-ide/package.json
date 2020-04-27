@@ -50,6 +50,7 @@
     "@seleniumhq/side-model": "^3.14.0",
     "@seleniumhq/side-utils": "^3.14.0",
     "browser-webdriver": "^3.14.0",
+    "chrome-net": "^3.3.3",
     "classnames": "^2.2.5",
     "code-export": "^3.14.0",
     "fuse.js": "^3.3.0",

@@ -40,6 +40,7 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       value: command.value,
     },
   })
+
   if (results.length >= 1) {
     // if more than one plugin responded, warn the user
     if (results.length > 1) {
@@ -160,7 +161,7 @@ export default function record(
       // double click removed the 2 clicks from before
       index -= 2
     }
-    const newCommand = recordCommand(command, targets[0][0], value, index)
+    const newCommand = recordCommand(command, targets[1][0], value, index)
     if (Commands.list.has(command)) {
       const type = Commands.list.get(command).target
       if (type && type.name === ArgTypes.locator.name) {

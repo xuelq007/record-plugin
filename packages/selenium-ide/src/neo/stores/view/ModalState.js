@@ -156,6 +156,8 @@ class ModalState {
 
   @action.bound
   async codeExport(payload) {
+    /* eslint-disable no-debugger */
+    debugger
     this.exportState = { isExporting: true }
     this.exportPayload = payload
   }
